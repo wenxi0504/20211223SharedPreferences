@@ -28,6 +28,7 @@ public class MainActivity extends AppCompatActivity {
 
         // getSharedPreferences 可以共享数据源
         // method 2 to store data
+        /*
         SharedPreferences shp = getSharedPreferences("MY_DATA", Context.MODE_PRIVATE);
         SharedPreferences.Editor editor= shp.edit();
         editor.putInt("NUMBER",600);
@@ -36,7 +37,15 @@ public class MainActivity extends AppCompatActivity {
         int x = shp.getInt("NUMBER",0);
         Log.d(TAG,"onCreate"+x);
 
+         */
 
+       // MyData myData = new MyData(this);//may cause the memory leak
+        MyData myData = new MyData(getApplicationContext());//指向app的顶级引用
+        myData.number=1000;
+        myData.save();
+        int y= myData.load();
+        String TAG="myLog";
+        Log.d(TAG,"onCreate"+y);
 
     }
 }
