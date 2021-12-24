@@ -16,7 +16,7 @@ public class MainActivity extends AppCompatActivity {
 
         // visit interface
         //get preferences-> activity 独有的
-        // getSharedPreferences 可以共享数据源
+        /*Method1 to store data
         SharedPreferences shp= getPreferences(Context.MODE_PRIVATE);
         SharedPreferences.Editor editor= shp.edit();
         editor.putInt("NUMBER",100);
@@ -24,6 +24,19 @@ public class MainActivity extends AppCompatActivity {
         String TAG="myLog";
         int x = shp.getInt("NUMBER",0);
         Log.d(TAG,"onCreate"+x);
+         */
+
+        // getSharedPreferences 可以共享数据源
+        // method 2 to store data
+        SharedPreferences shp = getSharedPreferences("MY_DATA", Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor= shp.edit();
+        editor.putInt("NUMBER",600);
+        editor.apply();
+        String TAG="myLog";
+        int x = shp.getInt("NUMBER",0);
+        Log.d(TAG,"onCreate"+x);
+
+
 
     }
 }
